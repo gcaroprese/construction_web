@@ -1,0 +1,9 @@
+{% load i18n %}
+
+Aulet Abiega - Contact Web
+
+{% trans "Full Name" %}: {{ contact.full_name }}
+{% trans "Email" %}: {{ contact.email }}
+{% trans "Message" %}: {{ contact.message }}
+{% trans "CV" %}: {% if contact.cv %}http://{{ domain }}{{ contact.cv.url }}{% else %} ---- {% endif %}
+{% trans "Date" %}: {{ contact.date }}

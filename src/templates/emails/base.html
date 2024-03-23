@@ -1,0 +1,59 @@
+{% load i18n staticfiles %}
+
+<!DOCTYPE html>
+<html style="font-family: Arial; color: #000; font-size: 13px;" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Aulet Abiega | {% block page_title %}{% endblock %}</title>
+</head>
+
+<body style="margin: 0;">
+  <div style="padding: 10px 20px; color:#969696;">
+
+    <div style="padding-bottom: 10px; margin-bottom:10px; border-bottom: 1px solid #969696;">
+        <table style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="width: 50%;">
+                        <a href="http://{{ domain }}/">
+                            <img src="http://{{ domain }}{% static 'images/email-logo.jpg' %}"
+                                width="200" height="80" alt="Aulet Abiega">
+                        </a>
+                    </td>
+                    <td style="width: 50%; text-align:right; color:#969696;">
+                        <h1 style="font-size:15px; font-weight:400;">
+                            {% block title %}{% endblock %}
+                        </h1>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <table>
+        <tbody>
+            {% block content_table %}{% endblock %}
+        </tbody>
+    </table>
+
+    <div style="padding-top: 10px; margin-top:10px; border-top: 1px solid #969696;">
+        <table>
+            <tr>
+                <td>
+                    <img src="http://{{ domain }}{% static "images/email-footer.jpg" %}"
+                        width="30" height="30"
+                        style="vertical-align: middle;">
+                </td>
+                <td style="padding-left: 20px;">
+                    Azcuénaga 1496 4B - Vicente Lopez - CP 1638 - Buenos Aires - Argentina.
+                    <br>
+                    5411 6841.0445 - <a href="mailto:info@construction_site_sample.com" style="color:#969696;">info@construction_site_sample.com</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+  </div>
+</body>
+</html>

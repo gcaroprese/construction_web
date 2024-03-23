@@ -1,0 +1,221 @@
+//--------------------------------------------------------------------------------------------------
+// Slick
+//--------------------------------------------------------------------------------------------------
+.slick-slider
+    position: relative
+    display: block
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    -ms-touch-action: pan-y
+    touch-action: pan-y
+    -webkit-tap-highlight-color: transparent
+
+.slick-list
+    position: relative
+    overflow: hidden
+    display: block
+    margin: 0
+    padding: 0
+
+.slick-list:focus
+    outline: none
+
+.slick-list.dragging
+    cursor: pointer
+    cursor: hand
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+    -webkit-transform: translate3d(0, 0, 0)
+    -moz-transform: translate3d(0, 0, 0)
+    -ms-transform: translate3d(0, 0, 0)
+    -o-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+
+.slick-track
+    position: relative
+    left: 0
+    top: 0
+    display: block
+
+.slick-track:before, .slick-track:after
+    content: ""
+    display: table
+
+.slick-track:after
+    clear: both
+
+.slick-loading .slick-track
+    visibility: hidden
+
+.slick-slide
+    float: left
+    height: 100%
+    min-height: 1px
+    display: none
+
+[dir="rtl"] .slick-slide
+    float: right
+
+.slick-slide img
+    display: block
+
+.slick-slide.slick-loading img
+    display: none
+
+.slick-slide.dragging img
+    pointer-events: none
+
+.slick-initialized .slick-slide
+    display: block
+
+.slick-loading .slick-slide
+    visibility: hidden
+
+.slick-vertical .slick-slide
+    display: block
+    height: auto
+    border: 1px solid transparent
+
+//--------------------------------------------------------------------------------------------------
+// Arrows
+//--------------------------------------------------------------------------------------------------
+$arrow-size = 40px
+
+.slick-prev,
+.slick-next
+    position: absolute
+    display: block
+    top: $arrow-button-position
+    height: $arrow-button-size
+    width: $arrow-button-size
+    overflow: hidden
+    cursor: pointer
+    padding: 0
+    border: none
+    outline: none
+    background: $grey-dark
+    color: white
+
+    &:hover
+        background: $cyan
+        color: $grey-dark
+
+    &:focus
+        outline: none
+
+    &:before
+        @extend .icon
+        vertical-align: middle
+
+        height: $arrow-size
+        width: $arrow-size
+        margin: ($arrow-button-size - $arrow-size) * 0.5
+
+        font-size: $arrow-size
+        text-indent: 0
+        pointer-events: none
+
+    &:disabled:hover
+        background: $grey-dark
+        color: white
+        cursor: default
+
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before { opacity: 0.25; }
+
+.slick-prev
+    content: ''
+    left: $gutter * 0.5
+
+    &:before
+        content: $icon-chevron-left
+
+.slick-next
+    content: ''
+    right: $gutter * 0.5
+
+    &:before
+        content: $icon-chevron-right
+
+//--------------------------------------------------------------------------------------------------
+// Dots
+//--------------------------------------------------------------------------------------------------
+
+$dot-size = 24px
+.slick-dots
+    position: absolute
+    display: block
+    bottom: $gutter * 2
+    width: 100%
+    list-style: none
+    text-align: center
+
+.slick-dots li
+    position: relative
+    margin: 0px ($gutter * 0.25)
+    display: inline-block
+
+    button
+        display: block
+        padding: 0
+        cursor: pointer
+        background: transparent
+        border: 0
+        color: white
+        font-size: $dot-size
+
+        > span
+            display: none
+
+        .mobile &
+            font-size: $dot-size * 0.5
+
+        &:focus
+            outline: none
+
+        &:before
+            @extend .icon
+            content: $icon-circle-o
+
+    &.slick-active button:before
+        content: $icon-circle
+
+.slider
+    &:not(.slick-initialized)
+        .slide
+            display: none
+
+.slider-container
+
+    &.cover
+        position: absolute
+        z-index: 10
+        top: $header-height
+        right: 0
+        bottom: 0
+        left: 0
+        margin: auto
+
+
+        .slick-dots
+            bottom: 55px
+
+        #home &
+            top: $home-header-height
+
+        .mobile &,
+        #home.mobile &
+            top: $mobile-header-height
+
+        .slider, .slick-list, .slick-track, .slide
+            height: 100%
+
+        .slide
+            background-repeat: no-repeat

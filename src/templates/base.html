@@ -1,0 +1,70 @@
+{% load staticfiles i18n %}
+<!doctype html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>{% block html_title %}Aulet Abiega{% endblock %}</title>
+        <meta name="description" content="">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="{{ request.scheme }}://{{ request.get_host }}{% block twitter_url %}{% endblock %}">
+        <meta name="twitter:title" content="Aulet Abiega | {% block twitter_title %}{% endblock %}">
+        {# <meta name="twitter:image:src" content="{{ request.scheme }}://{{ request.get_host }}{% block twitter_image %}{% static "imgs/share.png" %}{% endblock %}"> #}
+        <meta name="twitter:description" content="">
+
+        <meta property="og:title" content="Aulet Abiega | {% block og_title %}{% endblock %}">
+        <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% block og_url %}{% endblock %}">
+        <meta property="og:type" content="website">
+        {# <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% block og_image %}{% static "imgs/share.png" %}{% endblock %}"> #}
+        <meta property="og:description" content="">
+
+        {# <link rel="shortcut icon" href="{% static 'imgs/favicon.ico' %}"> #}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% if request.is_mobile %}mobile{% endif %}{% endblock %}">
+        {% block body %}
+
+            {% include 'includes/header.html' %}
+
+            {% block content %}{% endblock %}
+
+            {% include 'includes/footer.html' %}
+
+        {% endblock body %}
+
+        {% include 'browser_sync.html' %}
+
+        <script type="text/javascript">
+            function shallow_extend(destination, source) {
+                for (var property in source) {
+                    if (source.hasOwnProperty(property)) {
+                        destination[property] = source[property];
+                    }
+                }
+                return destination;
+            };
+
+            if (!('construction_site_sample' in window)) { window.construction_site_sample =  {}; }
+
+            var global_variables = {
+                'home': "{% url 'website:home' %}"
+            };
+
+            window.construction_site_sample = shallow_extend(window.construction_site_sample, global_variables)
+        </script>
+
+        <script src="//maps.googleapis.com/maps/api/js?v=3"></script>
+
+        <script src="{% static 'scripts/libs.js' %}"></script>
+        <script src="{% static 'scripts/index.js' %}"></script>
+    </body>
+
+</html>

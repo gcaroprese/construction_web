@@ -1,0 +1,124 @@
+header
+    background: white
+    padding: $gutter 0
+
+    nav
+        ul
+            text-align: center
+
+            li
+                display: inline-block
+
+        a
+            display: inline-block
+            position: relative
+            margin: 0 $gutter
+            padding: ($gutter * 0.25) ($gutter * 0.5)
+            vertical-align: middle
+            color: $grey
+            text-decoration: none
+            font-size: $font-size-medium
+
+            &:after
+                content: ''
+                display: none
+                position: absolute
+                bottom: 0
+                left: 30%;
+                right: 30%;
+                height: 1px
+                background: $grey
+
+            &:hover,
+            &.active
+                &:after
+                    display: block
+
+            &.logo
+                font-size: 40px
+
+                &:hover:after,
+                &.active:after
+                    display: none
+
+            #home &
+                margin-top: $gutter * 2
+
+                &.logo
+                    padding: 0
+                    @extend .spritesheet-construction_site_sample
+                    sprite($construction_site_sample-logo-sm)
+                    display: inline-block
+                    margin-top: 0
+
+                    > i
+                        display: none
+
+body.mobile
+    header
+        position: fixed
+        z-index: 1000
+        top: 0
+        left: 0
+        right: 0
+        height: $mobile-header-height
+        padding: ($gutter * 0.5) 0
+        border-bottom: 1px solid $grey-light
+
+        .icon-burger,
+        .logo
+            display: block
+            padding: $gutter * 0.5
+            position: absolute
+            top: 0
+            font-size: $font-size-medium
+            color: $grey-dark
+
+        .icon-burger
+            right: $gutter * 0.5
+            top: 4px
+            border: none
+            cursor: pointer
+            background: transparent
+            font-size: $font-size-medium
+        .logo
+            left: $gutter * 0.5
+            font-size: 20px
+
+        nav
+            position: fixed
+            display: none
+            top: $mobile-header-height
+            left: 0
+            right: 0
+            margin: 0 auto
+            z-index: 1000
+            background: white
+
+            &.opened
+                display: block
+
+            ul
+                li
+                    display: block
+
+                    &:last-child a:after
+                        display: none
+            a
+                display: block
+                margin: 0
+                padding: ($gutter) 0
+
+                &:after
+                    content: ''
+                    position: absolute
+                    bottom: 0
+                    left: 30%;
+                    right: 30%;
+                    height: 1px
+                    background: $grey
+
+
+#home.mobile
+    nav a
+        margin: 0

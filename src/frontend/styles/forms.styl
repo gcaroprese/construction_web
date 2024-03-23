@@ -1,0 +1,55 @@
+$input-padding = $gutter * 0.25
+
+.form-group
+    position: relative
+    margin: ($gutter * 0.25) 0
+
+    .errorlist
+        background: darken(red, 25%)
+        font-weight: 600
+        margin-top: $gutter * 0.25
+
+        li
+            padding: $input-padding
+
+.help-text
+    margin: $gutter * 0.5 0
+    text-align: left
+
+.form-control,
+.help-text,
+[type="submit"]
+    font-size: $font-size-medium
+
+.form-control
+    display: block
+    width: 100%
+    padding: ($gutter * 0.25) ($gutter * 0.5)
+    line-height: $line-height-base
+    color: $grey
+    background-color: white
+    background-image: none
+    border: none
+    font-family: inherit
+
+    +placeholder()
+        color: $grey
+        text-transform: uppercase
+
+    textarea&
+        margin: 0
+        resize: none
+
+
+[type="submit"]
+    display: block
+    width: 100%
+    padding: ($gutter * 0.5) 0
+    background: $grey-darker
+    text-transform: uppercase
+    color: white
+    border: none
+    cursor: pointer
+
+    &:hover
+        background: $grey-dark

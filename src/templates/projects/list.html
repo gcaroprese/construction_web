@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block body_id %}projects{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+    <div id="projects-grid">
+        <ul id="grid">
+            {% for project in projects %}
+                <li class="project"
+                    data-x="{{ project.grid_x }}"
+                    data-y="{{ project.grid_y }}"
+                    data-w="{{ project.grid_w }}"
+                    data-h="{{ project.grid_h }}">
+                    <a href="{{ project.get_absolute_url }}">
+
+                        <div class="image"
+                            style="background-image: url('{{ project.grid_image.url }}');">
+                        </div>
+
+                        <div class="badge grid {{ project.grid_badge_position }}">
+                            {% if project.name %}
+                                <h1>{{ project.name|linebreaksbr }}</h1>
+                            {% endif %}
+                            {% if project.location %}
+                                <h2>{{ project.location|linebreaksbr }}</h2>
+                            {% endif %}
+                            {% if project.year or project.program %}
+                                <div class="row">
+                                    <div class="column">
+                                        {% if project.year %}
+                                        <p>{% trans "Year" %}: <span>{{ project.year }}</span></p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="column">
+                                        {% if project.program %}
+                                        <p>{% trans "Program" %}: <span>{{ project.program|linebreaksbr }}</span></p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="pager">
+            <a href="#" data-direction="-1"><i class="icon icon-chevron-left"></i></a>
+            <a href="#" data-direction="1"><i class="icon icon-chevron-right"></i></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

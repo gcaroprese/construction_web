@@ -1,0 +1,63 @@
+
+body:not(.mobile)
+    .about-us
+
+        > div
+            position: absolute
+            top: $header-height
+            right: 0
+            left: 0
+            bottom: 0
+
+        .photo
+            position: absolute
+            top: 0
+            right: 0
+            left: 50%
+            bottom: 0
+            background: transparent
+            background-image: url('../images/about-us.jpg')
+            background-repeat: no-repeat
+            background-size: cover
+            background-position: center
+
+        .text
+            position: relative
+            height: 100%
+            width: 46%
+            margin: 0 2%
+
+            font-size: 25px
+            @media (min-width: $screen-lg) and (min-height:770px)
+                font-size: 36px
+
+            > div
+                position: absolute
+                top: 0
+                right: 0
+                left: 0
+                bottom: $footer-height
+                margin: auto
+                clearfix()
+
+                height: 425px
+                max-width: 430px
+                @media (min-width: $screen-lg) and (min-height:770px)
+                    height: 610px
+                    max-width: 690px
+
+.mobile
+    .about-us
+        padding-bottom: $footer-height
+
+        .photo
+            img
+                vertical-align: middle
+                max-width: 100%
+                height: auto
+                margin: 0 auto
+
+        .text
+            margin: $gutter
+            font-size: $font-size-large
+

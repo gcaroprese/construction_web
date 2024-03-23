@@ -1,0 +1,4 @@
+src/frontend/tmp
+services
+*.pyc
+.DS_Store

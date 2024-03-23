@@ -1,0 +1,21 @@
+proc_name = "gunicorn:construction_site_sample.com"
+daemon = False
+workers = 2 
+timeout = 300
+bind = "unix:/www/construction_site_sample.com/public_html/construction_site_sample.com/tmp/gunicorn.sock"
+pidfile = "/www/construction_site_sample.com/public_html/construction_site_sample.com/tmp/gunicorn.pid"
+backlog = 2048
+loglevel = "warning"
+accesslog = "/www/construction_site_sample.com/public_html/construction_site_sample.com/logs/gunicorn.access.log"
+errorlog = "/www/construction_site_sample.com/public_html/construction_site_sample.com/logs/gunicorn.error.log"
+raw_env = [
+    'DJANGO_SETTINGS_MODULE=settings_prod',
+    'DJANGO_SECRET=2O41D6S8G0%si7IE2B11p3Z39M4DuN726Wl0qAOp6~186765V',
+    'DATABASE_NAME=dbcjmnjzfrvk10',
+    'DATABASE_USER=ueaqktcgzefgy',
+    'DATABASE_PASSWORD=Accesar2023!',
+    'SERVER_EMAIL=noreply@construction_site_sample.com',
+    'EMAIL_HOST_USER=construction_site_sample@mg.bek.email',
+    'EMAIL_HOST_PASSWORD=349c35cdb1b89c8af31872a0007d19ff-c50a0e68-0143457a',
+    'EMAIL_HOST=smtp.mailgun.org',
+]

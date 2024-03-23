@@ -1,0 +1,291 @@
+.badge
+    padding: $gutter
+    position: absolute
+    background: white
+    z-index: 100
+    transition-property: all
+    transition-duration: 0.3s
+    transition-timing-function: easing('in-out-cubic')
+
+    .row
+        clearfix()
+        margin: 0 $gutter * -0.5
+
+        .column
+            float: left
+            width: 50%
+            padding-left: $gutter * 0.5
+            padding-right: $gutter * 0.5
+
+    p span
+        display: block
+
+
+    $triangle-size = 20px
+    .toggle-container
+        position: relative
+        display: block
+        height: $triangle-size
+
+        .toggle
+            display: block
+            position: absolute
+            bottom: $triangle-size * -0.5
+            right: $triangle-size * -0.5
+            width: 0
+            height: 0
+            border-style: solid
+            border-width: $triangle-size $triangle-size 0 0
+            border-color: $grey transparent transparent transparent
+            cursor: pointer
+
+            transition-property: all
+            transition-duration: 0.5s
+            transition-timing-function: easing('in-out-cubic')
+
+    &.grid
+        pointer-events: none
+
+        .column
+            float: none
+            width: 100%
+            & + .column
+                margin-top: $gutter * 0.5
+
+        @media(min-width:$screen-lg)
+            min-width: 216px
+            .column
+                float: left
+                width: 50%
+                & + .column
+                    margin-top: 0
+
+    &.detail
+        top: $arrow-button-position
+        margin-top: $header-height * 0.7
+        left: $gutter + $arrow-button-size
+        background: white
+
+        h1
+            font-size: $font-size-xxlarge
+        h2
+            font-size: $font-size-large
+            margin: ($gutter * 0.25) 0 ($gutter * 2) 0
+
+    &.closed
+        cursor: pointer
+
+        > *
+            display: none
+
+        .toggle-container
+            display: block
+            height: $arrow-button-size - $gutter * 2
+            width: $arrow-button-size - $gutter * 2
+            margin-top: 0
+
+            .toggle
+                right: 0
+                bottom: 0
+                transform: rotate(180deg)
+
+
+
+.separator
+    display: block
+    width: 10px
+    height: 1px
+    background: $grey
+    margin: $gutter * 0.5 0
+
+#projects
+    padding-bottom: $footer-height
+
+    .grid-container
+        position: absolute
+        top: $header-height
+        right: $gutter * 0.5
+        bottom: $footer-height + $gutter * 0.5
+        left: $gutter * 0.5
+        padding-bottom: $pager-size + $gutter * 0.5
+        overflow: hidden
+
+        &:after
+            display: block
+            position: absolute
+            background: white
+            top: 0
+            bottom: $pager-size + $gutter * 0.5
+            right: 0
+            width: $gutter * 0.5
+            content: ''
+
+    #projects-grid
+        width: 100%
+
+
+        &,
+        #grid
+            position: relative
+            height: 100%
+
+        #grid
+            overflow: hidden
+            transition-property: all
+            transition-duration: 0.3s
+            transition-timing-function: easing('in-out-cubic')
+
+
+        .project
+            position: absolute
+            padding: $gutter * 0.5
+
+            > a
+                display: block
+                position: relative
+                cursor: pointer
+                height: 100%
+                width: 100%
+                overflow: hidden
+                color: $grey
+
+            .image
+                width: 100%
+                height: 100%
+                background-size: cover
+                background-position: center
+
+            .badge
+                cursor: pointer
+                background: $cyan
+
+                h1
+                    font-size: $font-size-large
+                h2
+                    font-size: $font-size-medium
+                    margin: ($gutter * 0.25) 0 ($gutter * 2) 0
+
+                &.bottom_left, &.bottom_right
+                    bottom: 0
+
+                &.top_left, &.top_right
+                    top: 0
+
+                &.bottom_right, &.top_right
+                    right: 0
+                    transform: translateX(100%)
+
+                &.bottom_left, &.top_left
+                    left: 0
+                    transform: translateX(-100%)
+
+            &:hover
+                .badge
+                    transform: translateX(0)
+
+    .pager
+        position: absolute
+        width: 100%
+        bottom: ($pager-size + $gutter * 0.5) * -1
+        text-align: right
+
+        a
+            position: relative
+            display: inline-block
+            height: $pager-size
+            width: $pager-size
+            padding: $gutter * 0.25
+            background: $grey-dark
+            color: white
+            cursor: pointer
+
+            margin-right: $gutter * 0.5
+
+            &:hover
+                background: $cyan
+                color: $grey
+
+            i
+                font-size: 20px
+                text-align: center
+                pointer-events: none
+
+
+
+
+#projects.mobile
+
+    #list
+        clearfix()
+        margin: 0 ($gutter * -0.25)
+
+        .project
+            position: relative
+            padding: $gutter * 0.5
+            float: left
+            width: 50%
+            height: 50%
+
+            &:nth-child(2n+1)
+                clear: both
+
+            a
+                display: block
+                text-decoration: none
+
+            img
+                display: inline-block
+                vertical-align: middle
+                width: 100%
+                height: 100%
+
+            h1
+                background: $cyan
+                color: white
+                font-weight: 700
+                padding: $gutter * 0.25
+                position: relative
+
+                span
+                    display: inline-block
+
+    #detail
+        position: relative
+        padding-bottom: $pager-size + ($gutter * 0.5)
+
+        .badge
+            position: relative
+            display: block
+            top: 0
+            left: 0
+            margin-top: 0
+            margin-bottom: $gutter * 0.5
+            padding: $gutter
+
+            background: $cyan
+            color: white
+
+            .separator
+                background: white
+
+            h2
+                margin-bottom: $gutter
+
+
+        .pager
+            bottom: 0
+
+        .images
+            text-align: center
+            > img
+                display: inline-block
+                vertical-align: middle
+                width: 100%
+                height: auto
+                // margin: 0 auto
+
+                &.portrait
+                    width: 50%
+
+                & + img
+                    margin-top: $gutter * 0.5

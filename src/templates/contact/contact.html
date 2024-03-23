@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles %}
+{% load thumbnail widget_tweaks %}
+
+{% block body_id %}contact{% endblock %}
+
+{% block content %}
+<article class="contact">
+    <h1 class="hidden">{% trans "Contact" %}</h1>
+
+    <div id="map-container">
+        <div id="map-overlay"><i class="icon icon-pen"></i></div>
+        <div id="map-canvas"></div>
+    </div>
+
+    <div class="container">
+        <div class="form">
+            {% block contact_form %}
+            <form action="{% url 'contact:contact' %}" method="post" enctype="multipart/form-data" novalidate> {% csrf_token %}
+                <div class="column">
+                    {% for field in form %}
+                        {% if field.name == 'cv' %}
+                                <button type="submit">{% trans 'Send' %}</button>
+                                <div class="contact-info">
+                                    <p>
+                                        Azcuénaga 1496. 4B. Vicente Lopez. CP 1638. Buenos Aires. Argentina.
+                                        <br>
+                                        T 5411 6841.0445. info@construction_site_sample.com
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p class="help-text">
+                                    Si querés participar de nuestros programas de jóvenes profesionales o
+                                    pasantías, o postularte a cualquiera de nuestras búsquedas laborales,
+                                    ingresá tu CV aquí:
+                                </p>
+                            {% endif %}
+                        <div class="form-group field-{{ field.name }} widget-{{ field|widget_type }} {% if field.errors %}has-error{% endif %}">
+                            <div class="field">
+                                {% render_field field placeholder=field.label class='form-control' %}
+                            </div>
+                            {{ field.errors }}
+                        </div>
+                        {% if field.name == 'cv' %}
+                            <ul class="social-links">
+                                <li>
+                                    <a href="https://www.facebook.com/Aulet-Abiega-Arquitectos-589228331222077/" data-target="blank"><i class="icon icon-facebook"></i></a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </form>
+            {% endblock %}
+        </div>
+        {% block contact_info %}{% endblock %}
+    </div>
+
+</article>
+{% endblock %}

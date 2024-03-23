@@ -1,0 +1,7 @@
+<div class="slider-container cover">
+    <div class="slider" data-slider data-slider-type="dots">
+        {% for image in slideshow.images.all %}
+            <div class="slide" style="{{ image.get_image_styles }} {{ image.get_cropping_styles }}"></div>
+        {% endfor %}
+    </div>
+</div>

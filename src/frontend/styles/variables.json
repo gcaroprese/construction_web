@@ -1,0 +1,21 @@
+{
+    "screen-lg": "1200px",
+    "header-height": "90px",
+    "home-header-height": "164px",
+    "mobile-header-height": "40px",
+    "grey": "#787878",
+    "grey-dark": "#969696",
+    "grey-darker": "#3c3c3c",
+    "cyan": "#34d9c3",
+    "gutter": "20px",
+    "footer-height": "55px",
+    "arrow-button-size": "60px",
+    "arrow-button-position": "30%",
+    "pager-size": "30px",
+    "font-size-small": "10px",
+    "font-size-base": "12px",
+    "font-size-medium": "15px",
+    "font-size-large": "20px",
+    "font-size-xlarge": "36px",
+    "font-size-xxlarge": "40px"
+}

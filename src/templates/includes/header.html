@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load website_tags %}
+
+<header>
+    <div class="container">
+        {% if request.is_mobile %}
+            <button class="icon icon-burger" data-role="navigation-toggle"></button>
+            <a href="{% url 'website:home' %}" class="logo">
+                <i class="icon icon-logo"></i>
+            </a>
+        {% endif %}
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'website:home' %}" class="{% is_active_url 'website:home' %}" title="{% trans "Home" %}">
+                        {% trans "Home" %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'projects:list' %}" class="{% is_active_url 'projects:' %}" title="{% trans "Projects" %}">
+                        {% trans "Projects" %}
+                    </a>
+                </li>
+                {% if not request.is_mobile %}
+
+                <li>
+                    <a href="{% url 'website:home' %}" class="logo">
+                        <i class="icon icon-logo"></i>
+                    </a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'website:about-us' %}" class="{% is_active_url 'website:about-us' %}" title="{% trans "About us" %}">
+                        {% trans "About us" %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'contact:contact' %}" class="{% is_active_url 'contact:' %}" title="{% trans "Contact" %}">
+                        {% trans "Contact" %}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

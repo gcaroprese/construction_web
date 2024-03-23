@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block body_id %}projects{% endblock %}
+
+{% block content %}
+
+<article
+    id="detail"
+    data-next-project="{{ next_project.get_absolute_url }}"
+    data-previous-project="{{ previous_project.get_absolute_url }}"
+    >
+
+    <div class="badge detail">
+        <h1>{{ project.name|linebreaksbr }}</h1>
+        {% if project.program %}
+            <h2>{{ project.program|linebreaksbr }}</h2>
+        {% endif %}
+        {% if project.year or project.surface or project.location %}
+            <div class="row">
+                {% if project.year or project.surface %}
+                    <div class="column">
+                        <span class="separator"></span>
+                        {% if project.year %}
+                            <p>{% trans "Year" %}: <span>{{ project.year }}</span></p>
+                        {% endif %}
+                        {% if project.surface %}
+                            <p>{% trans "Surface" %}: <span>{{ project.surface }} m2</span></p>
+                        {% endif %}
+                        <span class="separator"></span>
+                    </div>
+                {% endif %}
+                {% if project.location %}
+                    <div class="column">
+                        <span class="separator"></span>
+                        <p>{% trans "Location" %}: <span>{{ project.location|linebreaksbr }}</span></p>
+                        <span class="separator"></span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if project.work %}
+            <p>{% trans "Work" %}: <span>{{ project.work|linebreaksbr }}</span></p>
+        {% endif %}
+        {% if project.work and project.authors %}
+            <span class="separator"></span>
+        {% endif %}
+        {% if project.authors %}
+            <p>{{ project.authors|linebreaksbr }}</p>
+        {% endif %}
+    </div>
+
+    <div class="images">
+        {% for image in project.images.all %}
+            <img src="{{ image.file.url }}" alt="{{ project.name }}" class="
+                {% if image.file.width < image.file.height %}portrait{% else %}landscape{% endif %}">
+        {% endfor %}
+    </div>
+
+    <div class="pager">
+        <a href="#" data-role="mobile-projects-pager" data-direction="-1"><i class="icon icon-chevron-left"></i></a>
+        <a href="#" data-role="mobile-projects-pager" data-direction="1"><i class="icon icon-chevron-right"></i></a>
+    </div>
+
+</article>
+{% endblock %}

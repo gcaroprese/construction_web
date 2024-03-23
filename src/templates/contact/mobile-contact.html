@@ -1,0 +1,37 @@
+{% extends "contact/contact.html" %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block contact_form %}
+    <form action="{% url 'contact:contact' %}" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.name == 'cv' %}
+                <p class="help-text">
+                    Si querés participar de nuestros programas de jóvenes profesionales o
+                    pasantías, o postularte a cualquiera de nuestras búsquedas laborales,
+                    ingresá tu CV aquí:
+                </p>
+            {% endif %}
+            <div class="form-group field-{{ field.name }} widget-{{ field|widget_type }} {% if field.errors %}has-error{% endif %}">
+                <div class="field">
+                    {% render_field field placeholder=field.label class='form-control' %}
+                </div>
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit">{% trans 'Send' %}</button>
+    </form>
+    <div class="contact-info">
+        <p>
+            Azcuénaga 1496. 4B. Vicente Lopez. CP 1638. Buenos Aires. Argentina.
+            <br>
+            T 5411 6841.0445. info@construction_site_sample.com
+        </p>
+    </div>
+    <ul class="social-links">
+        <li>
+            <a href="https://www.facebook.com/Aulet-Abiega-Arquitectos-589228331222077/" data-target="blank"><i class="icon icon-facebook"></i></a>
+        </li>
+    </ul>
+{% endblock %}

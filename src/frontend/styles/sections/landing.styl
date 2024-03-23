@@ -1,0 +1,40 @@
+body#landing
+    cursor: pointer
+
+.landing
+
+    > div
+        position: absolute
+        width: 580px
+        height: 395px
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        margin: auto
+        padding: $gutter
+
+    .logo
+        @extend .spritesheet-construction_site_sample
+        sprite($construction_site_sample-logo-xl)
+        margin: 0 auto
+
+    p
+        margin-top: 130px
+        font-size: $font-size-medium
+        text-align: center
+
+body.mobile
+
+    .landing
+        > div
+            width: 320px
+            height: 165px
+            padding: 0
+
+        .logo
+            sprite($construction_site_sample-logo-xs)
+
+        p
+            margin-top: $gutter * 2
+            font-size: $font-size-base

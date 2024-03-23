@@ -1,0 +1,129 @@
+{% extends 'admin/change_list.html' %}
+{% load staticfiles i18n %}
+{% load project_tags %}
+
+{% block stylesheets %}
+    {{ block.super }}
+
+    <style>
+        .grid-container {
+            position: relative;
+            height: 400px;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        #projects-grid {
+          position: relative;
+          height: 100%;
+        }
+        .project {
+            position: absolute;
+            font-weight: 700;
+        }
+
+        .project .inner {
+            position: absolute;
+            top: 0;
+            bottom: 5px;
+            left: 5px;
+            right: 0;
+            cursor: pointer;
+            background: #787878;
+            color: black;
+            background-size: cover;
+        }
+
+        .project .inner span {
+            text-transform: uppercase;
+        }
+
+        .project .inner .controls {
+            float: left;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .project .inner label {
+            display: block;
+            margin-top: 5px;
+        }
+        .project .inner label select { display: block; }
+
+        /* Hide all list_editables */
+        /*
+        .field-grid_x,
+        .field-grid_y,
+        .field-grid_w,
+        .field-grid_h,
+        .field-grid_badge_position,
+        .column-grid_x,
+        .column-grid_y,
+        .column-grid_w,
+        .column-grid_h,
+        .column-grid_badge_position { display: none; }
+        */
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{% static 'scripts/libs.js' %}"></script>
+    <script src="{% static 'scripts/admin.js' %}"></script>
+{% endblock %}
+
+{% block before_result_list %}
+<div class="grp-module">
+    <div class="grp-row">
+        <div class="grid-container">
+            <ul id="projects-grid">
+                {% for project in grid_projects %}
+                    <li class="project"
+                        data-x="{{ project.grid_x }}"
+                        data-y="{{ project.grid_y }}"
+                        data-w="{{ project.grid_w }}"
+                        data-h="{{ project.grid_h }}"
+                        data-id="{{ project.id }}">
+
+                        <div class="inner" style="background-image: url('{{ project.grid_image.url }}');">
+
+                            <div class="controls">
+                                <span class="name">{{ project.name }}</span>
+
+                                <label for="id-project-size">
+                                    {% trans "Size" %}
+                                    <select
+                                        name="project-size"
+                                        id="id-project-size">
+                                        {% for value, label in project.SIZES %}
+                                            <option value="{{ value }}"
+                                                {% extract_size value %}
+                                                {% is_project_size value project %}
+                                            >
+                                                {{ label }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+
+                                <label for="id-project-bage-position">
+                                    {% trans "Badge Position" %}
+                                    <select
+                                        name="project-badge-position"
+                                        id="id-project-badge-position">
+                                        {% for value, label in project.GRID_BADGES %}
+                                            <option value="{{ value }}"
+                                                {% if project.grid_badge_position == value %} selected {% endif %}
+                                            >{{ label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,156 @@
+#contact
+    background: black
+    color: white
+    padding-bottom: $footer-height + ($gutter * 0.5)
+
+.contact
+
+    #map-container
+        position: relative
+        margin-bottom: $gutter * 2
+
+        height: 150px
+        @media(min-width: $screen-lg) and (min-height:745px)
+            height: 250px
+
+        #map-canvas
+            width: 100%
+            display: none
+
+        &.map-active
+            transition-property: height
+            transition-duration: 0.3s
+            transition-timing-function: easing('in-out-cubic')
+
+            &, #map-canvas
+                height: 400px
+
+        #map-overlay
+            position: absolute
+            top: 0
+            left: 0
+            height: 100%
+            width: 100%
+            background: transparent
+            background-image: url('../images/map-overlay-bg.jpg')
+            background-size: cover
+            cursor: pointer
+
+            $pen-size = 70px
+            > i
+                position: absolute
+                margin: auto
+                top: 0
+                right: 0
+                bottom: 0
+                left: 0
+                width: $pen-size
+                height: $pen-size
+                font-size: $pen-size
+
+        .info-window
+            color: $grey
+            padding: $gutter 0 $gutter $gutter
+
+            h1
+                font-weight: 700
+                margin-bottom: 1em
+            p
+                margin-bottom: 0.5em
+
+
+    .form
+        clearfix()
+        height: 240px
+        width: 870px
+        margin: 0 auto
+
+
+        .column
+            float: left
+            width: 620px
+
+            & + .column
+                margin-left: $gutter
+                width: 230px
+
+            .help-text
+                color: $grey
+                font-weight: 600
+                line-height: 21px
+
+
+        .field-message textarea
+            height: 131px
+
+        .field-cv
+
+            .field
+                position: relative
+                height: 40px
+
+            input
+                position: absolute
+                z-index: 2
+                opacity: 0
+                height: 40px
+                cursor: pointer
+
+            &:after
+                content: 'Cargar CV'
+                display: block
+                text-transform: uppercase
+                font-weight: 600
+                text-align: center
+                padding: 14px 0
+                width: 100%
+                position: absolute
+                top: 0
+                left: 0
+                z-index: 1
+                margin: auto
+                background: $grey-darker
+                color: #fff
+
+
+        .success-message
+            text-align: center
+            font-size: $font-size-xxlarge
+
+
+    .contact-info
+        margin-top: $gutter
+        font-size: $font-size-medium
+        text-align: center
+        font-weight: 700
+
+.social-links
+    margin-top: $gutter * 0.25
+    text-align: center
+
+    li
+        display: inline-block
+
+    a
+        color: $grey
+        line-height: 38px
+        font-size: $font-size-large
+
+
+.mobile
+    .form
+        height: auto
+        width: auto
+        margin: 0 auto
+
+        [type="submit"]
+            margin-top: $gutter
+            background: $cyan
+
+        .success-message
+            font-size: $font-size-medium
+
+    .contact-info,
+    .help-text
+        font-size: $font-size-base
+

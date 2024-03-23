@@ -1,0 +1,3 @@
+{% load i18n %}
+
+Aulet Abiega | {% trans "Web Contact" %}

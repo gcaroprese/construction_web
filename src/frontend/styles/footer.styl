@@ -1,0 +1,32 @@
+footer
+    height: $footer-height
+    font-size: $font-size-small
+    background: transparent
+    z-index: 100
+
+    padding: $gutter ($gutter * 2)
+    @media(min-width: $screen-lg)
+        padding: $gutter ($gutter * 7)
+
+    &, a
+        text-decoration: none
+        color: $grey
+
+        #home &
+            color: white
+
+    ul
+        width: 100%
+        clearfix()
+
+    li
+
+        &:first-child
+            float: left
+        &:last-child
+            float: right
+
+            #about-us:not(.mobile) & a
+                color: white
+
+

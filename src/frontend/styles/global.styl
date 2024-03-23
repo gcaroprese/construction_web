@@ -1,0 +1,63 @@
+//--------------------------------------------------------------------------------------------------
+// Sticky Footer
+//--------------------------------------------------------------------------------------------------
+
+
+html
+    position: relative
+    height: 100%
+
+body
+    position: relative
+    min-height: 100%
+
+footer
+    width: 100%
+    position: absolute
+    bottom: 0
+    left: 0
+
+
+//--------------------------------------------------------------------------------------------------
+// Globals
+//--------------------------------------------------------------------------------------------------
+
+body
+    background: white
+    color: $grey
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: $font-size-base
+    text-transform: uppercase
+
+    &.navigation-opened
+        overflow: hidden
+
+    &.mobile
+        padding-top: $mobile-header-height
+
+*
+    box-sizing: border-box
+    &:focus
+        outline: none
+        border: none
+        background: transparent
+
+.container
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: $gutter * 0.5
+    padding-right: $gutter * 0.5
+    clearfix()
+
+    width: (940px + $gutter)
+    @media(min-width: $screen-lg)
+        width: (1140px + $gutter)
+
+    .mobile &
+        width: auto
+
+.hidden
+    display: none

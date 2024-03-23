@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block body_id %}projects{% endblock %}
+
+{% block content %}
+<div id="list">
+    {% for project in projects %}
+        <div class="project">
+            <a href="{{ project.get_absolute_url }}">
+                {% if project.grid_mobile_image %}
+                    {% thumbnail project.grid_mobile_image 300x300 crop='smart' as grid_image %}
+                {% else %}
+                    {% thumbnail project.grid_image 300x300 crop='smart' as grid_image %}
+                {% endif %}
+                <img src="{{ grid_image.url }}" alt="{{ project.name }}"/>
+                <h1>
+                    <span>{{ project.name }}</span>
+                </h1>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

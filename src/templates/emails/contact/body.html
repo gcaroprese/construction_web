@@ -1,0 +1,42 @@
+{% extends "emails/base.html" %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Web Contact" %}{% endblock %}
+{% block title %}{% trans "Web Contact" %}{% endblock %}
+
+{% block content_table %}
+
+<tr>
+    <td>
+        <p style="margin-bottom:0.5em; font-weight:400; font-size:11px; color:#808184;">{% trans "Full Name" %}</p>
+        <p style="margin-top:0; color:#3c3c3c;">{{ contact.full_name }}</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p style="margin-bottom:0.5em; font-weight:400; font-size:11px; color:#808184;">{% trans "Email" %}</p>
+        <p style="margin-top:0; color:#3c3c3c;">{{ contact.email }}</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p style="margin-bottom:0.5em; font-weight:400; font-size:11px; color:#808184;">{% trans "Message" %}</p>
+        <p style="margin-top:0; color:#3c3c3c;">{{ contact.message|linebreaksbr }}</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p style="margin-bottom:0.5em; font-weight:400; font-size:11px; color:#808184;">{% trans "CV" %}</p>
+        <p style="margin-top:0; color:#3c3c3c;">
+            {% if contact.cv %}<a href="http://{{ domain }}{{ contact.cv.url }}">{% trans "Download CV" %}</a>{% else %} ---- {% endif %}
+        </p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p style="margin-bottom:0.5em; font-weight:400; font-size:11px; color:#808184;">{% trans "Date" %}</p>
+        <p style="margin-top:0; color:#3c3c3c;">{{ contact.date }}</p>
+    </td>
+</tr>
+
+{% endblock content_table %}
